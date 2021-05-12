@@ -51,6 +51,7 @@ public class NodeCameraView extends FrameLayout implements GLSurfaceView.Rendere
     private int mCameraHeight;
     private int mSurfaceWidth;
     private int mSurfaceHeight;
+    private int mCameraZoom = 0;
     private NodeCameraViewCallback mNodeCameraViewCallback;
     private boolean isMediaOverlay = false;
 
@@ -114,6 +115,7 @@ public class NodeCameraView extends FrameLayout implements GLSurfaceView.Rendere
         }
         try {
             Camera.Parameters para = mCamera.getParameters();
+            para.setZoom(mCameraZoom);
             choosePreviewSize(para, 1920, 1080);
             mCamera.setParameters(para);
             setAutoFocus(this.isAutoFocus);
@@ -174,6 +176,20 @@ public class NodeCameraView extends FrameLayout implements GLSurfaceView.Rendere
         return info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT;
     }
 
+    public int setZoomScale(int zoomScale) {
+        Camera.Parameters para = mCamera.getParameters();
+        if (!para.isZoomSupported()) return -3;
+
+        int max = para.getMaxZoom();
+        this.mCameraZoom = Math.min(max, zoomScale);
+
+        para.setZoom(this.mCameraZoom);
+        mCamera.setParameters(para);
+    }
+
+    public int getZoomScale() {
+        return this.mCameraZoom;
+    }
 
     public int getCameraOrientation() {
         return getCameraInfo().orientation;
@@ -264,6 +280,7 @@ public class NodeCameraView extends FrameLayout implements GLSurfaceView.Rendere
 
         try {
             Camera.Parameters para = mCamera.getParameters();
+            para.setZoom(mCameraZoom);
             choosePreviewSize(para, 1280, 720);
             mCamera.setParameters(para);
         } catch (Exception e) {

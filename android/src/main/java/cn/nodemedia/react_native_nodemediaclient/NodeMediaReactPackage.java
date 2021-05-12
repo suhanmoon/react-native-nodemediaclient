@@ -30,7 +30,6 @@ public class NodeMediaReactPackage implements ReactPackage{
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
 
         return Arrays.<ViewManager>asList(
-                new NodePlayerViewManager(),
                 new NodeCameraViewManager()
         );
     }
