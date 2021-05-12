@@ -176,7 +176,8 @@ public class NodeCameraView extends FrameLayout implements GLSurfaceView.Rendere
         return info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT;
     }
 
-    public int setZoomScale(int zoomScale) {
+    public int setZoom(int zoomScale) {
+        if (mCamera == null || mCamera.getParameters() == null) return -1;
         Camera.Parameters para = mCamera.getParameters();
         if (!para.isZoomSupported()) return -3;
 
@@ -189,7 +190,7 @@ public class NodeCameraView extends FrameLayout implements GLSurfaceView.Rendere
         return this.mCameraZoom;
     }
 
-    public int getZoomScale() {
+    public int getZoom() {
         return this.mCameraZoom;
     }
 

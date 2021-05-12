@@ -106,6 +106,10 @@ public class RCTNodeCameraView extends NodeCameraView implements LifecycleEventL
         this.smoothSkinLevel = smoothSkinLevel;
     }
 
+    public void setZoomScale(int zoomScale) {
+        this.setZoom(zoomScale);
+    }
+
     public int startPrev() {
         int result = mNodePublisher.startPreview();
         return result;

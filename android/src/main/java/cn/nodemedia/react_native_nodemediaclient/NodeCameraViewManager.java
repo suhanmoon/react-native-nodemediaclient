@@ -108,6 +108,11 @@ public class NodeCameraViewManager extends ViewGroupManager<RCTNodeCameraView> {
         view.setCryptoKey(cryptoKey);
     }
 
+    @ReactProp(name = "zoomScale")
+    public void setZoomScale(RCTNodeCameraView view, @Nullable Integer zoomScale) {
+        view.setZoomScale(zoomScale);
+    }
+    
     @Nullable
     @Override
     public Map<String, Integer> getCommandsMap() {

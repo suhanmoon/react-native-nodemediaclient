@@ -211,18 +211,6 @@ public class NodePublisher implements NodeCameraView.NodeCameraViewCallback {
         return mNodeCameraView.stopPreview();
     }
 
-    public int setZoomScale(int zoomScale) {
-        if (mNodeCameraView == null) {
-            return -1;
-        }
-        if (zoomScale < 0 || zoomScale > 100) {
-            return -2;
-        }
-        return mNodeCameraView.setZoomScale(zoomScale);
-
-        // return jniSetScaleGPUImage(zoomScale);
-    }
-
     public int setFlashEnable(boolean flashEnable) {
         if (mNodeCameraView == null) {
             return -1;
