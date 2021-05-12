@@ -127,7 +127,16 @@
 }
 
 -(int)switchCamera {
-  return [_np switchCamera];
+  [_np stopPreview];
+  int cameraId = [[self.camera objectForKey:@"cameraId"] intValue];
+  BOOL cameraFrontMirror = [[self.camera objectForKey:@"cameraFrontMirror"] boolValue];
+  [_np setCameraPreview:self cameraId:cameraId ? 0 : 1 frontMirror:cameraFrontMirror];
+  [_np startPreview];
+  
+  
+//  int r= [_np switchCamera];
+//  [_np startPreview];
+  return 0;
 }
 
 @end
