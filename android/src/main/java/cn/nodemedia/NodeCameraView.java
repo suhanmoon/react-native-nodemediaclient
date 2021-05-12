@@ -185,6 +185,8 @@ public class NodeCameraView extends FrameLayout implements GLSurfaceView.Rendere
 
         para.setZoom(this.mCameraZoom);
         mCamera.setParameters(para);
+
+        return this.mCameraZoom;
     }
 
     public int getZoomScale() {
