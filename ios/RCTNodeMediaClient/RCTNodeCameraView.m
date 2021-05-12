@@ -105,6 +105,11 @@
   [_np setCryptoKey:cryptoKey];
 }
 
+- (void)setZoomScale:(NSInteger)zoomScale {
+  _zoomScale = zoomScale;
+  [_np setZoomScale:zoomScale];
+}
+
 -(int)startprev {
   return [_np startPreview];
 }
